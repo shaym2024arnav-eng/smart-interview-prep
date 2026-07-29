@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="login-hero">
+
+    <div class="login-left">
+
+        <p class="eyebrow">
+            <h1>
+    Smart Interview Prep
+</h1>
+        </p>
+
+        <h2>
+            Practice. Evaluate. Improve.
+        </h2>
+
+        <p class="hero-subtitle">
+            Prepare smarter with mock interviews, intelligent feedback,
+            weakness analysis, and personalized study roadmaps.
+        </p>
+
+        <div class="hero-points">
+
+            <div>
+                <strong>Mock Interviews</strong>
+                <span>Timed, role-specific practice sessions</span>
+            </div>
+
+            <div>
+                <strong>AI Hint Assistant</strong>
+                <span>Conceptual nudges without giving away answers</span>
+            </div>
+
+            <div>
+                <strong>Study Roadmaps</strong>
+                <span>Adaptive learning plans based on performance</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="auth-card">
+
+        <h2 class="auth-title">
+            Smart Interview Prep
+        </h2>
+
+        <p class="auth-subtitle">
+            Login to continue your preparation journey.
+        </p>
+
+        <form method="POST">
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    required>
+            </div>
+
+            <button class="btn btn-primary w-100">
+                Login
+            </button>
+
+        </form>
+
+        <p class="text-center mt-3 mb-0">
+            New user?
+            <a href="/register">
+                Create account
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

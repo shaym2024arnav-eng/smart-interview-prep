@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-page">
+
+    <div class="dashboard-hero">
+
+        <div>
+            <p class="eyebrow">
+                AI-Powered Dashboard
+            </p>
+
+            <h1>
+                Welcome back, {{ user.name }}
+            </h1>
+
+            <p>
+                Track your progress, start role-specific interviews,
+                and improve with intelligent feedback.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-stat-card">
+            <h2>{{ total_interviews }}</h2>
+            <p>Total Interviews</p>
+        </div>
+
+        <div class="dashboard-stat-card">
+            <h2>{{ total_questions }}</h2>
+            <p>Questions Answered</p>
+        </div>
+
+        <div class="dashboard-stat-card">
+            <h2>{{ average_score }}</h2>
+            <p>Average Score</p>
+        </div>
+
+        <div class="dashboard-stat-card">
+            <h2>{{ highest_score }}</h2>
+            <p>Highest Score</p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-section">
+
+        <div class="section-header">
+            <h3>Quick Start Interview</h3>
+            <p>Select your role and difficulty to begin a timed mock interview.</p>
+        </div>
+
+        <form action="/start-interview" method="POST">
+
+            <div class="quick-form-grid">
+
+                <div>
+                    <label>Select Role</label>
+                    <select name="role" class="form-select" required>
+                        <option value="sde">SDE</option>
+                        <option value="data_analyst">Data Analyst</option>
+                        <option value="ml_engineer">ML Engineer</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Select Difficulty</label>
+                    <select name="difficulty" class="form-select" required>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="quick-actions">
+
+                <button type="submit" class="btn btn-primary action-btn">
+                    Start Interview
+                </button>
+
+                <a href="/history" class="btn btn-outline-dark action-btn">
+                    View History
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="dashboard-section mb-5">
+
+        <div class="section-header">
+            <h3>Performance Trend</h3>
+            <p>
+                A line chart tracks your average score progression across recent interviews.
+            </p>
+        </div>
+
+        {% if score_values %}
+            <canvas id="scoreChart" height="90"></canvas>
+        {% else %}
+            <p class="text-muted">
+                Complete interviews to view your performance trend.
+            </p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% if score_values %}
+
+<script>
+const labels = {{ score_labels|tojson }};
+const scores = {{ score_values|tojson }};
+
+new Chart(document.getElementById("scoreChart"), {
+    type: "line",
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "Average Score",
+            data: scores,
+            borderWidth: 3,
+            tension: 0.4,
+            fill: false
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+</script>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="notes-page">
+
+    <div class="dashboard-hero">
+        <p class="eyebrow">Study Notes Library</p>
+
+        <h1>Role-Based Interview Notes</h1>
+
+        <p>
+            Learn important concepts before attempting mock interviews.
+            Each section includes definitions, key points, and interview questions.
+        </p>
+    </div>
+
+    {% for role, topics in notes_data.items() %}
+
+    <div class="notes-role-section">
+
+        <div class="section-header">
+            <h3>{{ role }}</h3>
+            <p>Important technical concepts for {{ role }} interviews.</p>
+        </div>
+
+        <div class="notes-grid">
+
+            {% for topic in topics %}
+
+            <div class="note-card">
+
+                <h4>{{ topic.title }}</h4>
+
+                <p class="note-definition">
+                    {{ topic.definition }}
+                </p>
+
+                <h6>Key Points</h6>
+
+                <ul>
+                    {% for point in topic.points %}
+                    <li>{{ point }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h6>Interview Questions</h6>
+
+                <ol>
+                    {% for question in topic.questions %}
+                    <li>{{ question }}</li>
+                    {% endfor %}
+                </ol>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

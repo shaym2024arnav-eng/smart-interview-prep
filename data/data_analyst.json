@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+    "keywords": ["matching", "rows", "null", "join", "table"]
+  },
+  {
+    "question": "How do you handle missing values?",
+    "keywords": ["drop", "imputation", "mean", "median", "mode"]
+  },
+  {
+    "question": "What is data cleaning?",
+    "keywords": ["duplicates", "missing values", "consistency"]
+  },
+  {
+    "question": "What is the difference between mean and median?",
+    "keywords": ["average", "outliers", "central tendency"]
+  },
+  {
+    "question": "Explain the purpose of a pivot table.",
+    "keywords": ["aggregation", "summarization", "grouping"]
+  },
+  {
+    "question": "What is exploratory data analysis?",
+    "keywords": ["eda", "visualization", "patterns", "insights"]
+  },
+  {
+    "question": "What is the difference between structured and unstructured data?",
+    "keywords": ["schema", "text", "images", "database"]
+  },
+  {
+    "question": "What is data visualization?",
+    "keywords": ["charts", "graphs", "dashboard", "insights"]
+  },
+  {
+    "question": "Explain the difference between correlation and causation.",
+    "keywords": ["relationship", "cause", "effect", "association"]
+  },
+  {
+    "question": "What is SQL GROUP BY?",
+    "keywords": ["aggregate", "count", "sum", "grouping"]
+  }
+]

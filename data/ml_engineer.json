@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What is overfitting?",
+    "keywords": ["training data", "generalization", "variance"]
+  },
+  {
+    "question": "What is underfitting?",
+    "keywords": ["bias", "simple model", "poor performance"]
+  },
+  {
+    "question": "Explain the bias-variance tradeoff.",
+    "keywords": ["bias", "variance", "generalization"]
+  },
+  {
+    "question": "What is cross-validation?",
+    "keywords": ["folds", "training", "testing", "evaluation"]
+  },
+  {
+    "question": "What is gradient descent?",
+    "keywords": ["optimization", "learning rate", "loss function"]
+  },
+  {
+    "question": "What is supervised learning?",
+    "keywords": ["labeled data", "classification", "regression"]
+  },
+  {
+    "question": "What is unsupervised learning?",
+    "keywords": ["clustering", "patterns", "unlabeled data"]
+  },
+  {
+    "question": "What is precision and recall?",
+    "keywords": ["true positive", "false positive", "classification"]
+  },
+  {
+    "question": "Explain the confusion matrix.",
+    "keywords": ["tp", "tn", "fp", "fn"]
+  },
+  {
+    "question": "What is feature engineering?",
+    "keywords": ["selection", "transformation", "features"]
+  }
+]

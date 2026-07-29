@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="results-page">
+
+    <div class="results-hero">
+
+        <div>
+            <p class="eyebrow">
+                Interview Analysis
+            </p>
+
+            <h1>
+                Results & Personalized Roadmap
+            </h1>
+
+            <p>
+                Review your score, understand weak areas, and follow a guided improvement plan.
+            </p>
+        </div>
+
+        <div class="score-circle">
+            <span>{{ average_score }}%</span>
+            <small>Final Score</small>
+        </div>
+
+    </div>
+
+    {% if weak_areas %}
+
+    <div class="results-section">
+
+        <div class="section-header">
+            <h3>Weak Areas</h3>
+            <p>
+                Based on your low-scoring answers, revise these topics before your next attempt.
+            </p>
+        </div>
+
+        <div class="weak-area-container">
+            {% for area in weak_areas %}
+                <div class="weak-chip">
+                    {{ area }}
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    {% if roadmap %}
+
+    <div class="results-section">
+
+        <div class="section-header">
+            <h3>AI Assistant Roadmap</h3>
+            <p>
+                A personalized study timeline generated from your weak areas.
+            </p>
+        </div>
+
+        <div class="roadmap-timeline">
+
+            {% for item in roadmap %}
+
+            <div class="roadmap-item">
+
+                <div class="roadmap-number">
+                    {{ "%02d"|format(loop.index) }}
+                </div>
+
+                <div class="roadmap-content">
+                    <h5>
+                        {{ item.day }} — {{ item.topic }}
+                    </h5>
+
+                    <p>
+                        {{ item.task }}
+                    </p>
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="results-section">
+
+        <div class="section-header">
+            <h3>Question-wise Feedback</h3>
+            <p>
+                Review your answers, scores, and improvement suggestions.
+            </p>
+        </div>
+
+        {% for result in results %}
+
+        <div class="question-result-card">
+
+            <div class="question-result-header">
+                <span>Question {{ loop.index }}</span>
+                <strong>{{ result.score }}%</strong>
+            </div>
+
+            <h5>
+                {{ result.question }}
+            </h5>
+
+            <p>
+                <strong>Your Answer:</strong>
+                {{ result.answer }}
+            </p>
+
+            <div class="progress mb-3">
+                <div
+                    class="progress-bar"
+                    style="width: {{ result.score }}%;">
+                    {{ result.score }}%
+                </div>
+            </div>
+
+            <p>
+                <strong>Feedback:</strong>
+                {{ result.feedback }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="results-actions">
+
+        <a href="/download-report/{{ interview_id }}"
+           class="btn btn-primary action-btn">
+            Download PDF Report
+        </a>
+
+        <a href="/dashboard"
+           class="btn btn-outline-dark action-btn">
+            Take Another Interview
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

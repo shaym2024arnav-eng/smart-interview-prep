@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="interview-page">
+
+    <div class="interview-topbar">
+
+        <div>
+            <p class="eyebrow">
+                Mock Interview Session
+            </p>
+
+            <h1>
+                Interview Questions
+            </h1>
+
+            <p class="text-muted">
+                Answer all questions carefully. Use hints only when you are stuck.
+            </p>
+        </div>
+
+        <div class="timer-card">
+            ⏰ Time Remaining:
+            <span id="timer">{{ timer_minutes }}:00</span>
+        </div>
+
+    </div>
+
+    <form action="/submit-interview" method="POST" id="interviewForm">
+
+        <input type="hidden" name="interview_id" value="{{ interview_id }}">
+
+        {% for q in questions %}
+
+        <div class="interview-question-card">
+
+            <div class="question-meta">
+                Question {{ loop.index }}
+            </div>
+
+            <h3 class="question-title">
+                {{ q.question }}
+            </h3>
+
+            <input
+                type="hidden"
+                name="question_{{ loop.index }}"
+                value="{{ q.question }}">
+
+            <input
+                type="hidden"
+                name="keywords_{{ loop.index }}"
+                value="{{ q.keywords | join(',') }}">
+
+            <button
+                type="button"
+                class="btn btn-outline-dark hint-btn"
+                onclick="toggleHint('hint_{{ loop.index }}')">
+                Show Hint
+            </button>
+
+            <div
+                id="hint_{{ loop.index }}"
+                class="hint-box mt-3"
+                style="display: none;">
+
+                <strong>Think about:</strong>
+                {{ q.keywords | join(", ") }}
+
+            </div>
+
+            <textarea
+                name="answer_{{ loop.index }}"
+                class="form-control mt-3"
+                rows="5"
+                placeholder="Write your answer here..."
+                required></textarea>
+
+        </div>
+
+        {% endfor %}
+
+        <input
+            type="hidden"
+            name="total_questions"
+            value="{{ questions|length }}">
+
+        <div class="submit-area mt-4 mb-5">
+            <button type="submit" class="btn btn-primary action-btn">
+                Submit Interview
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+function toggleHint(id) {
+    const hintBox = document.getElementById(id);
+
+    if (hintBox.style.display === "none") {
+        hintBox.style.display = "block";
+    } else {
+        hintBox.style.display = "none";
+    }
+}
+</script>
+
+<script>
+let totalSeconds = {{ timer_minutes }} * 60;
+
+const timerElement = document.getElementById("timer");
+const interviewForm = document.getElementById("interviewForm");
+
+function updateTimer() {
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+
+    timerElement.innerText =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+    if (totalSeconds <= 0) {
+        interviewForm.submit();
+        return;
+    }
+
+    totalSeconds--;
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+</script>
+
+{% endblock %}

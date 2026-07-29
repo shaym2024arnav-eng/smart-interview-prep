@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What is the difference between a list and a tuple in Python?",
+    "keywords": ["mutable", "immutable", "memory", "performance"]
+  },
+  {
+    "question": "Explain the concept of object-oriented programming.",
+    "keywords": ["class", "object", "inheritance", "polymorphism"]
+  },
+  {
+    "question": "What is a REST API?",
+    "keywords": ["http", "client", "server", "json", "stateless"]
+  },
+  {
+    "question": "What is multithreading?",
+    "keywords": ["threads", "parallelism", "concurrency", "cpu"]
+  },
+  {
+    "question": "What are Python decorators?",
+    "keywords": ["function", "wrapper", "metadata", "annotation"]
+  },
+  {
+    "question": "Explain the difference between stack and queue.",
+    "keywords": ["lifo", "fifo", "data structure", "order"]
+  },
+  {
+    "question": "What is database normalization?",
+    "keywords": ["redundancy", "normal forms", "consistency"]
+  },
+  {
+    "question": "Explain SQL joins.",
+    "keywords": ["inner join", "left join", "right join", "tables"]
+  },
+  {
+    "question": "What is exception handling?",
+    "keywords": ["try", "except", "error", "finally"]
+  },
+  {
+    "question": "What is Git?",
+    "keywords": ["version control", "repository", "commit", "branch"]
+  }
+]

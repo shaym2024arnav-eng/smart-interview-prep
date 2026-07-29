@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Interview History</h2>
+
+{% if interviews %}
+
+<table class="table table-bordered table-striped shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Interview ID</th>
+            <th>Role</th>
+            <th>Difficulty</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for interview in interviews %}
+        <tr>
+            <td>{{ interview.id }}</td>
+            <td>{{ interview.role }}</td>
+            <td>{{ interview.difficulty }}</td>
+            <td>{{ interview.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+<div class="alert alert-warning">
+    No interviews taken yet.
+</div>
+
+{% endif %}
+
+<a href="/dashboard" class="btn btn-secondary">
+    Back to Dashboard
+</a>
+
+{% endblock %}

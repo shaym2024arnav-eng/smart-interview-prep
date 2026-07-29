@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Interview Prep</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=50">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body id="mainBody">
+
+{% if current_user.is_authenticated and request.endpoint not in ['login', 'register'] %}
+
+<nav class="top-navbar">
+    <button class="menu-btn" id="menuBtn" type="button">
+        ☰
+    </button>
+
+    <div class="brand">
+        Smart Interview Prep
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+
+   <a href="/dashboard" class="side-menu-item">Dashboard</a>
+<a href="/notes" class="side-menu-item">
+    Study Notes
+</a>
+<a href="/history" class="side-menu-item">History</a>
+
+<button id="themeToggle" class="side-menu-item" type="button">
+    Dark Mode
+</button>
+
+<a href="/logout" class="side-menu-item">Logout</a>
+</div>
+
+{% endif %}
+
+<div class="container mt-4">
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuBtn = document.getElementById("menuBtn");
+    const sideMenu = document.getElementById("sideMenu");
+    const themeToggle = document.getElementById("themeToggle");
+    const mainBody = document.getElementById("mainBody");
+
+    if (menuBtn && sideMenu) {
+        menuBtn.addEventListener("click", function () {
+            sideMenu.classList.toggle("show-menu");
+        });
+    }
+
+    if (themeToggle && mainBody) {
+        themeToggle.addEventListener("click", function () {
+            mainBody.classList.toggle("dark-mode");
+
+            if (mainBody.classList.contains("dark-mode")) {
+                themeToggle.querySelector("span:last-child").innerText = "Light Mode";
+                localStorage.setItem("theme", "dark");
+            } else {
+                themeToggle.querySelector("span:last-child").innerText = "Dark Mode";
+                localStorage.setItem("theme", "light");
+            }
+        });
+
+        if (localStorage.getItem("theme") === "dark") {
+            mainBody.classList.add("dark-mode");
+            themeToggle.querySelector("span:last-child").innerText = "Light Mode";
+        }
+    }
+});
+</script>
+
+</body>
+</html>
