@@ -23,13 +23,10 @@ An intelligent interview preparation platform that generates role-specific inter
 - Chart.js
 
 ## Installation
-```
-git clone https://github.com/shaym2024arnav-eng/smart-interview-prep.git
+```git clone https://github.com/shaym2024arnav-eng/smart-interview-prep.git
 cd smart-interview-prep
 pip install -r requirements.txt
 python app.py
-```
-git clone https://github.com/YOUR_USERNAME/AI-Powered-Smart-Interview-Preparation-System.git
 
 cd AI-Powered-Smart-Interview-Preparation-System
 
